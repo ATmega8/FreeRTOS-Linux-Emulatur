@@ -82,9 +82,9 @@
  *----------------------------------------------------------*/
 
 #define configUSE_PREEMPTION					1
-#define configUSE_PORT_OPTIMISED_TASK_SELECTION	1
-#define configUSE_IDLE_HOOK						1
-#define configUSE_TICK_HOOK						1
+#define configUSE_PORT_OPTIMISED_TASK_SELECTION	0
+#define configUSE_IDLE_HOOK						0
+#define configUSE_TICK_HOOK						0
 #define configTICK_RATE_HZ						( 1000 ) /* In this non-real time simulated environment the tick frequency has to be at least a multiple of the Win32 tick frequency, and therefore very slow. */
 #define configMINIMAL_STACK_SIZE				( ( unsigned short ) 50 ) /* In this simulated case, the stack only has to hold one small structure as the real stack is part of the win32 thread. */
 #define configTOTAL_HEAP_SIZE					( ( size_t ) ( 23 * 1024 ) )
@@ -114,9 +114,9 @@
 /* Run time stats gathering configuration options. */
 unsigned long ulGetRunTimeCounterValue( void ); /* Prototype of function that returns run time counter. */
 void vConfigureTimerForRunTimeStats( void );	/* Prototype of function that initialises the run time counter. */
-#define configGENERATE_RUN_TIME_STATS			1
-#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() vConfigureTimerForRunTimeStats()
-#define portGET_RUN_TIME_COUNTER_VALUE() ulGetRunTimeCounterValue()
+#define configGENERATE_RUN_TIME_STATS			0
+/*#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() vConfigureTimerForRunTimeStats()
+#define portGET_RUN_TIME_COUNTER_VALUE() ulGetRunTimeCounterValue()*/
 
 /* Co-routine related configuration options. */
 #define configUSE_CO_ROUTINES 					1
@@ -153,8 +153,6 @@ extern void vAssertCalled( unsigned long ulLine, const char * const pcFileName )
 #define configASSERT( x ) if( ( x ) == 0 ) vAssertCalled( __LINE__, __FILE__ )
 
 /* Include the FreeRTOS+Trace FreeRTOS trace macro definitions. */
-#define TRACE_ENTER_CRITICAL_SECTION() portENTER_CRITICAL()
-#define TRACE_EXIT_CRITICAL_SECTION() portEXIT_CRITICAL()
-#include "trcKernelPort.h"
 
 #endif /* FREERTOS_CONFIG_H */
+
