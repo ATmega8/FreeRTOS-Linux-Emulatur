@@ -14,5 +14,5 @@ include_directories (inc)
 add_executable (freertos_test ${SRCS_DIR})
 
 #编译选项
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os -Wall -ggdb -pthread")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os -Wall -ggdb -pthread -finstrument-functions")
 
